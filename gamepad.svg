@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Body -->
+  <rect x="6" y="18" width="52" height="28" rx="12" fill="#8b5cf6"/>
+  <!-- Left grip -->
+  <ellipse cx="16" cy="46" rx="10" ry="8" fill="#7c3aed"/>
+  <!-- Right grip -->
+  <ellipse cx="48" cy="46" rx="10" ry="8" fill="#7c3aed"/>
+
+  <!-- D-pad vertical -->
+  <rect x="18" y="26" width="5" height="13" rx="2" fill="#0a0a12"/>
+  <!-- D-pad horizontal -->
+  <rect x="15" y="29" width="11" height="5" rx="2" fill="#0a0a12"/>
+
+  <!-- Face buttons -->
+  <circle cx="44" cy="28" r="2.5" fill="#06b6d4"/>
+  <circle cx="50" cy="32" r="2.5" fill="#f59e0b"/>
+  <circle cx="44" cy="36" r="2.5" fill="#22c55e"/>
+  <circle cx="38" cy="32" r="2.5" fill="#f43f5e"/>
+
+  <!-- Left joystick -->
+  <circle cx="26" cy="38" r="4" fill="#0a0a12"/>
+  <circle cx="26" cy="38" r="2" fill="#6d28d9"/>
+
+  <!-- Right joystick -->
+  <circle cx="40" cy="26" r="4" fill="#0a0a12"/>
+  <circle cx="40" cy="26" r="2" fill="#6d28d9"/>
+
+  <!-- Start/Select -->
+  <rect x="28" y="30" width="4" height="2" rx="1" fill="#0a0a12"/>
+  <rect x="32" y="30" width="4" height="2" rx="1" fill="#0a0a12"/>
+</svg>
