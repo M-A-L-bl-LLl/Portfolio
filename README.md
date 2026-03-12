@@ -26,11 +26,9 @@
 #### 🖥️ Интерфейс
 - **Typewriter-эффект** — заголовок печатается при загрузке
 - **Параллакс** — фон и контент движутся с разной скоростью при скролле
-- **Hex-сетка** с градиентными орбами на главном экране
 - **Scanlines** — CRT-эффект поверх страницы
 - **Кастомный курсор** с glow-эффектом и ripple при клике
 - **Floating particles** — парящие частицы на фоне
-- **Полоса прогресса** прокрутки вверху страницы
 - **Переключатель языка** RU / EN
 - **Анимация нажатия** — все кнопки сжимаются при клике
 
@@ -87,7 +85,6 @@
 npm install
 npm run dev      # localhost:5173
 npm run build    # сборка в dist/
-npm run deploy   # публикация на GitHub Pages
 ```
 
 ---
@@ -103,7 +100,6 @@ A Unity Game Developer portfolio styled as a game UI. Features an XP system, que
 #### 🖥️ UI & Visual Effects
 - **Typewriter effect** — title types itself on load
 - **Parallax scrolling** — background and content move at different speeds
-- **Hex grid** with gradient orbs on the hero section
 - **Scanlines** — CRT overlay effect
 - **Custom cursor** with glow and ripple on click
 - **Floating particles** background
@@ -164,7 +160,6 @@ A Unity Game Developer portfolio styled as a game UI. Features an XP system, que
 npm install
 npm run dev      # localhost:5173
 npm run build    # production build → dist/
-npm run deploy   # build + publish to gh-pages
 ```
 
 ---

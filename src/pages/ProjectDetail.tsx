@@ -1,5 +1,5 @@
+import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 import { projects } from '../data/projects'
 import { useLanguage } from '../context/LanguageContext'
 import { projectsData } from '../i18n/translations'
@@ -11,7 +11,7 @@ function getYouTubeId(url: string): string | null {
   return match ? match[1] : null
 }
 
-function VideoPlayer({ url, watchLabel }: { url: string; watchLabel: string }) {
+function VideoPlayer({ url }: { url: string }) {
   const ytId = getYouTubeId(url)
 
   if (ytId) {
@@ -60,12 +60,12 @@ export default function ProjectDetail() {
   const description = localized?.description ?? project.description
 
   function renderDescription(text: string) {
-    const links = project.descriptionLinks
+    const links = project!.descriptionLinks
     if (!links) return text
 
-    const parts: (string | JSX.Element)[] = [text]
+    const parts: (string | React.ReactElement)[] = [text]
     for (const [phrase, href] of Object.entries(links)) {
-      const result: (string | JSX.Element)[] = []
+      const result: (string | React.ReactElement)[] = []
       for (const part of parts) {
         if (typeof part !== 'string') { result.push(part); continue }
         const segments = part.split(phrase)
@@ -128,7 +128,7 @@ export default function ProjectDetail() {
         />
       )}
 
-      {project.links?.youtube && <VideoPlayer url={project.links.youtube} watchLabel={tr.projectDetail.watchYoutube} />}
+      {project.links?.youtube && <VideoPlayer url={project.links.youtube} />}
 
       <div className="flex flex-wrap gap-2 mb-8">
         {project.tags.map((tag) => (
