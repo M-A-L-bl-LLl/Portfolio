@@ -2,7 +2,7 @@
 
 <div align="center">
 
-**[🌐 Live Demo](https://m-a-l-bl-lll.github.io/losevdd-portfolio/)**
+**[🌐 Live Demo](https://m-a-l-bl-lll.github.io/Portfolio/)**
 
 *Unity Game Developer portfolio with a gamedev twist*
 
