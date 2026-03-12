@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
+import { expYears } from '../../i18n/translations'
 
 function TerminalLine({ text, delay, color }: { text: string; delay: number; color?: string }) {
   const [visible, setVisible] = useState(false)
@@ -37,7 +38,7 @@ export default function About() {
 
   const lines = lang === 'ru' ? [
     { text: '> whoami', color: 'var(--color-accent)', delay: 0 },
-    { text: 'Unity-разработчик, 4+ лет опыта', delay: 200 },
+    { text: `Unity-разработчик, ${expYears()}+ лет опыта`, delay: 200 },
     { text: '> skills --list', color: 'var(--color-accent)', delay: 500 },
     { text: 'Mobile · WebGL · VR · Multiplayer', delay: 700 },
     { text: '> experience --highlights', color: 'var(--color-accent)', delay: 1100 },
@@ -50,7 +51,7 @@ export default function About() {
     { text: 'Открыт для новых проектов ✓', color: '#4ade80', delay: 2900 },
   ] : [
     { text: '> whoami', color: 'var(--color-accent)', delay: 0 },
-    { text: 'Unity Developer, 4+ years of experience', delay: 200 },
+    { text: `Unity Developer, ${expYears()}+ years of experience`, delay: 200 },
     { text: '> skills --list', color: 'var(--color-accent)', delay: 500 },
     { text: 'Mobile · WebGL · VR · Multiplayer', delay: 700 },
     { text: '> experience --highlights', color: 'var(--color-accent)', delay: 1100 },

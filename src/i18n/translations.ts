@@ -1,5 +1,12 @@
 export type Lang = 'en' | 'ru'
 
+// Sep 2021 is the start of professional experience
+const _expStart = new Date(2021, 8) // Sep 2021
+export function expYears(): number {
+  const now = new Date()
+  return Math.floor(((now.getFullYear() - _expStart.getFullYear()) * 12 + (now.getMonth() - _expStart.getMonth())) / 12)
+}
+
 export const t = {
   en: {
     nav: {
@@ -13,7 +20,7 @@ export const t = {
       greeting: "Hello, I'm",
       title: 'Unity Game Developer',
       description:
-        '4+ years building VR multiplayer arenas, mobile games, and WebGL projects.',
+        `${expYears()}+ years building VR multiplayer arenas, mobile games, and WebGL projects.`,
       stack: 'Unity · C# · Netcode · Zenject · VR',
       viewProjects: 'View Projects',
       contactMe: 'Contact Me',
@@ -79,7 +86,7 @@ export const t = {
       greeting: 'Привет, я',
       title: 'Unity-разработчик',
       description:
-        '4+ года разработки VR-арен, мобильных игр и WebGL-проектов.',
+        `${expYears()}+ года разработки VR-арен, мобильных игр и WebGL-проектов.`,
       stack: 'Unity · C# · Netcode · Zenject · VR',
       viewProjects: 'Мои проекты',
       contactMe: 'Написать мне',
@@ -135,13 +142,31 @@ export const t = {
   },
 }
 
+// startMonth/endMonth: 1-based. endYear/endMonth omitted = current date.
+function calcDuration(lang: 'en' | 'ru', startYear: number, startMonth: number, endYear?: number, endMonth?: number): string {
+  const end = endYear !== undefined && endMonth !== undefined ? new Date(endYear, endMonth - 1) : new Date()
+  const start = new Date(startYear, startMonth - 1)
+  const months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth())
+  const years = Math.floor(months / 12)
+  const rem = months % 12
+  if (lang === 'en') {
+    if (years === 0) return `${rem} mo`
+    if (rem === 0) return `${years} yr`
+    return `${years} yr ${rem} mo`
+  } else {
+    if (years === 0) return `${rem} мес`
+    if (rem === 0) return `${years} г`
+    return `${years} г ${rem} мес`
+  }
+}
+
 export const experienceData = {
   en: [
     {
       company: 'Freelance',
       role: 'Unity Developer',
       period: 'Oct 2022 — Present',
-      duration: '3 yr 6 mo',
+      duration: calcDuration('en', 2022, 10),
       description:
         'Developed and shipped mobile and WebGL games independently. Published titles on Google Play, App Store and WebGL platforms.',
       stack: ['Unity', 'C#', 'Addressables', 'Zenject', 'UniRx', 'GamePush', 'Firebase', 'Photon'],
@@ -150,7 +175,7 @@ export const experienceData = {
       company: 'VrReal',
       role: 'Unity Developer',
       period: 'Sep 2023 — Dec 2025',
-      duration: '2 yr 4 mo',
+      duration: calcDuration('en', 2023, 9, 2025, 12),
       description:
         'Built commercial multiplayer VR arenas for up to 10 players on local network. Handled real-time sync, VR device optimization, and gameplay mechanics.',
       stack: ['Unity', 'C#', 'Unity Netcode', 'VR (OpenXR)', 'Hurricane VR', 'Zenject', 'UniRx', 'PlasticSCM'],
@@ -160,7 +185,7 @@ export const experienceData = {
       company: 'Технопарк РГСУ',
       role: 'Unity Developer',
       period: 'Jun 2022 — Oct 2022',
-      duration: '5 mo',
+      duration: calcDuration('en', 2022, 6, 2022, 10),
       description:
         'Developed a networked VR military training simulator — first-person shooter supporting up to 10 players on a local network.',
       stack: ['Unity', 'C#', 'VR', 'OpenXR', 'Unity Netcode', 'MySQL'],
@@ -169,7 +194,7 @@ export const experienceData = {
       company: 'Технопарк РГСУ',
       role: 'Intern',
       period: 'Sep 2021 — May 2022',
-      duration: '9 mo',
+      duration: calcDuration('en', 2021, 9, 2022, 5),
       description:
         'Built a VR trainer for social workers, a virtual modern art exhibition, and a 360° mobile app for the Armed Forces temple.',
       stack: ['Unity', 'C#', 'VR', 'OpenXR', 'UniRx'],
@@ -180,7 +205,7 @@ export const experienceData = {
       company: 'Фриланс',
       role: 'Unity-разработчик',
       period: 'Окт 2022 — настоящее время',
-      duration: '3 г 6 мес',
+      duration: calcDuration('ru', 2022, 10),
       description:
         'Разработка и выпуск мобильных и WebGL-игр. Опубликованные проекты на Google Play, App Store и WebGL-площадках.',
       stack: ['Unity', 'C#', 'Addressables', 'Zenject', 'UniRx', 'GamePush', 'Firebase', 'Photon'],
@@ -189,7 +214,7 @@ export const experienceData = {
       company: 'VrReal',
       role: 'Unity-разработчик',
       period: 'Сен 2023 — Дек 2025',
-      duration: '2 г 4 мес',
+      duration: calcDuration('ru', 2023, 9, 2025, 12),
       description:
         'Разработка коммерческих мультиплеерных VR-арен для до 10 игроков по локальной сети. Синхронизация в реальном времени, оптимизация под VR-устройства, реализация игровых механик.',
       stack: ['Unity', 'C#', 'Unity Netcode', 'VR (OpenXR)', 'Hurricane VR', 'Zenject', 'UniRx', 'PlasticSCM'],
@@ -199,7 +224,7 @@ export const experienceData = {
       company: 'Технопарк РГСУ',
       role: 'Unity-разработчик',
       period: 'Июн 2022 — Окт 2022',
-      duration: '5 мес',
+      duration: calcDuration('ru', 2022, 6, 2022, 10),
       description:
         'Разработка сетевого VR-тренажёра для военной промышленности — шутер от первого лица на до 10 игроков по локальной сети.',
       stack: ['Unity', 'C#', 'VR', 'OpenXR', 'Unity Netcode', 'MySQL'],
@@ -208,7 +233,7 @@ export const experienceData = {
       company: 'Технопарк РГСУ',
       role: 'Стажёр',
       period: 'Сен 2021 — Май 2022',
-      duration: '9 мес',
+      duration: calcDuration('ru', 2021, 9, 2022, 5),
       description:
         'Разработка VR-тренажёра для социальных работников, виртуальной выставки современного искусства и мобильного приложения с 360°-экскурсией по храму Вооружённых Сил.',
       stack: ['Unity', 'C#', 'VR', 'OpenXR', 'UniRx'],
