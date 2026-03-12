@@ -152,6 +152,7 @@ interface Props { onClose: () => void; onWin?: () => void }
 export default function SpaceInvaders({ onClose, onWin }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const touchKeys = useRef({ left: false, right: false, shoot: false })
+  const restartRef = useRef<() => void>(() => {})
   const [confirmAbort, setConfirmAbort] = useState(false)
   const { lang } = useLanguage()
   const langRef = useRef(lang)
@@ -178,20 +179,24 @@ export default function SpaceInvaders({ onClose, onWin }: Props) {
     let animId: number
     let lastT = 0
     let canShoot = true
+    let closeTimer: ReturnType<typeof setTimeout> | null = null
 
     const keys = new Set<string>()
 
     function restart() {
+      if (closeTimer) { clearTimeout(closeTimer); closeTimer = null }
       gs = 'playing'; score = 0; lives = 3; px = W / 2 - PW / 2
       aliens = createAliens(); barriers = createBarriers()
-      bullets = []; dir = 1; moveTimer = 0; animFrame = 0; shootTimer = 0
+      bullets = []; dir = 1; moveTimer = 0; animFrame = 0; shootTimer = 0; canShoot = true
     }
+
+    restartRef.current = restart
 
     function onKeyDown(e: KeyboardEvent) {
       keys.add(e.code)
       if (e.code === 'Space') e.preventDefault()
       if (e.code === 'Escape') onClose()
-      if (e.code === 'KeyR' && gs !== 'playing') restart()
+      if (e.code === 'KeyR') restart()
     }
     function onKeyUp(e: KeyboardEvent) { keys.delete(e.code) }
 
@@ -205,7 +210,7 @@ export default function SpaceInvaders({ onClose, onWin }: Props) {
         gs = 'win'
         sfxWin()
         onWin?.()
-        setTimeout(() => onClose(), 4000)
+        closeTimer = setTimeout(() => onClose(), 4000)
         return
       }
 
@@ -239,7 +244,7 @@ export default function SpaceInvaders({ onClose, onWin }: Props) {
         } else {
           aliens.forEach(a => { if (a.alive) a.x += dir * AW * 0.6 })
         }
-        for (const a of alive) { if (a.y + AH >= PLAYER_Y - 4) { gs = 'dead'; setTimeout(() => onClose(), 4000); return } }
+        for (const a of alive) { if (a.y + AH >= PLAYER_Y - 4) { gs = 'dead'; closeTimer = setTimeout(() => onClose(), 4000); return } }
       }
 
       // Alien shoot
@@ -268,7 +273,7 @@ export default function SpaceInvaders({ onClose, onWin }: Props) {
         } else {
           if (b.x < px + PW && b.x + ABW > px && b.y + ABH > PLAYER_Y && b.y < PLAYER_Y + PH) {
             b.y = 9999; lives--; sfxHit()
-            if (lives <= 0) { gs = 'dead'; sfxGameOver(); setTimeout(() => onClose(), 4000) }
+            if (lives <= 0) { gs = 'dead'; sfxGameOver(); closeTimer = setTimeout(() => onClose(), 4000) }
             px = W / 2 - PW / 2
           }
           for (const bl of barriers) {
@@ -366,6 +371,7 @@ export default function SpaceInvaders({ onClose, onWin }: Props) {
 
     return () => {
       cancelAnimationFrame(animId)
+      if (closeTimer) clearTimeout(closeTimer)
       window.removeEventListener('keydown', onKeyDown)
       window.removeEventListener('keyup', onKeyUp)
     }
@@ -460,9 +466,7 @@ export default function SpaceInvaders({ onClose, onWin }: Props) {
 
       {/* Restart button */}
       <button
-        onClick={() => {
-          window.dispatchEvent(new KeyboardEvent('keydown', { code: 'KeyR' }))
-        }}
+        onClick={() => restartRef.current()}
         style={{
           marginTop: '2.5rem',
           fontFamily: 'var(--font-mono)',
