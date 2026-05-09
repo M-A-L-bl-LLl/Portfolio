@@ -33,11 +33,9 @@ export function useQuestSystem() {
     return () => window.removeEventListener('quest-update', onUpdate)
   }, [])
 
-  function projectState(slug: string, index: number): QuestState {
+  function projectState(slug: string): QuestState {
     if (visited.has(slug)) return 'completed'
-    if (index === 0) return 'available'
-    if (visited.has(projects[index - 1].slug)) return 'available'
-    return 'locked'
+    return 'available'
   }
 
   const completedCount = projects.filter(p => visited.has(p.slug)).length

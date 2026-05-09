@@ -273,6 +273,18 @@ export const projectsData = {
         'Puzzle game "Unblock the traffic" published on Yandex Games. Logic-based WebGL game with level progression, built for web with Yandex Games SDK integration.',
       shortDescription: 'WebGL traffic unblock puzzle on Yandex Games.',
     },
+    'no-more-pain-editor': {
+      title: 'No More Pain Editor',
+      description:
+        'Unity Editor productivity toolkit with hierarchy navigation, project folder styling, favorites overlay, mesh hover previews, inspector tabs, component copy/paste, and play mode value saving.',
+      shortDescription: 'Unity Editor productivity toolkit for faster hierarchy, project, and inspector workflows.',
+    },
+    'mesh2png': {
+      title: 'Mesh2PNG',
+      description:
+        'Unity Editor tool for rendering 3D objects, prefabs, and hierarchy parts into transparent PNG sprites or icons without entering Play Mode. Includes live preview, camera controls, lighting setup, and batch capture.',
+      shortDescription: 'Unity Editor tool for rendering 3D objects into transparent PNG sprites and icons.',
+    },
     'vr-base-defense': {
       title: 'Cooperative VR Base Defense',
       description:
@@ -334,6 +346,18 @@ export const projectsData = {
       description:
         'Головоломка «Разбери пробку», опубликованная на Яндекс Играх. Логическая WebGL-игра с прогрессией уровней и интеграцией Yandex Games SDK.',
       shortDescription: 'WebGL-головоломка про пробки на Яндекс Играх.',
+    },
+    'no-more-pain-editor': {
+      title: 'No More Pain Editor',
+      description:
+        'Набор инструментов для повышения продуктивности в Unity Editor: навигация по Hierarchy, стили папок в Project, панель избранного, hover preview для мешей, вкладки Inspector, копирование компонентов и сохранение значений в Play Mode.',
+      shortDescription: 'Набор Unity Editor-инструментов для ускорения работы с Hierarchy, Project и Inspector.',
+    },
+    'mesh2png': {
+      title: 'Mesh2PNG',
+      description:
+        'Инструмент для Unity Editor, который рендерит 3D-объекты, префабы и части иерархии в прозрачные PNG-спрайты или иконки без запуска Play Mode. Есть live preview, настройки камеры, освещение и пакетный экспорт.',
+      shortDescription: 'Unity Editor-инструмент для рендера 3D-объектов в прозрачные PNG-спрайты и иконки.',
     },
     'vr-base-defense': {
       title: 'Кооперативный VR-шутер с защитой базы',

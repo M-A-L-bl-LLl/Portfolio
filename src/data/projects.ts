@@ -73,6 +73,24 @@ export const projects: Project[] = [
     links: { website: 'https://yandex.ru/games/app/399040' },
   },
   {
+    slug: 'no-more-pain-editor',
+    title: 'No More Pain Editor',
+    description:
+      'Unity Editor productivity toolkit with hierarchy navigation, project folder styling, favorites overlay, mesh hover previews, inspector tabs, component copy/paste, and play mode value saving.',
+    shortDescription: 'Unity Editor productivity toolkit for faster hierarchy, project, and inspector workflows.',
+    tags: ['Unity', 'C#', 'Editor Tools', 'UPM', 'Tooling'],
+    links: { github: 'https://github.com/M-A-L-bl-LLl/NoMorePainEditor' },
+  },
+  {
+    slug: 'mesh2png',
+    title: 'Mesh2PNG',
+    description:
+      'Unity Editor tool for rendering 3D objects, prefabs, and hierarchy parts into transparent PNG sprites or icons without entering Play Mode. Includes live preview, camera controls, lighting setup, and batch capture.',
+    shortDescription: 'Unity Editor tool for rendering 3D objects into transparent PNG sprites and icons.',
+    tags: ['Unity', 'C#', 'Editor Tools', 'Rendering', 'UPM'],
+    links: { github: 'https://github.com/M-A-L-bl-LLl/Mesh2PNG' },
+  },
+  {
     slug: 'vr-base-defense',
     title: 'Cooperative VR Base Defense',
     description:

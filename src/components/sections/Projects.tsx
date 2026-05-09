@@ -154,7 +154,7 @@ export default function Projects() {
               const localized = texts[project.slug as keyof typeof texts]
               const title = localized?.title ?? project.title
               const shortDescription = localized?.shortDescription ?? project.shortDescription
-              const state = projectState(project.slug, i)
+              const state = projectState(project.slug)
               const colors = STATE_COLORS[state]
               const isLocked = state === 'locked'
               const prevTitle = i > 0
